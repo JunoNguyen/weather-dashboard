@@ -1,0 +1,66 @@
+h1 {
+    font-size: 25px;
+}
+button {
+    display:block;
+    background-color: #77b9df;
+    width:100%;
+    margin-top: 10px;
+    color:white;
+    border:none;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+input {
+    width: 95%;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+    border-top: 1px solid black;
+}
+
+li {
+    background-color: grey;
+    text-align: center;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+}
+.jumbotron {
+    text-align: center;
+    background-image: linear-gradient(to right, #363697, #4714be);
+    color:white;
+    border-radius: 0;
+    padding: 15px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.site {
+    display:flex
+}
+
+.searchedcity {
+    border-radius: 0;
+    border: 1px solid black;
+}
+
+.cityandforecast {
+    margin: 10px;
+    padding: 10px;
+}
+
+.weatherblock {
+    border: 1px solid black;
+    display:inline-block;
+    margin: 10px;
+    padding: 10px;
+}
