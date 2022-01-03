@@ -7,6 +7,9 @@
         <link rel="stylesheet" href="assets/css/reset.css"/>
         <link rel="stylesheet" href="assets/css/style.css"/>
         <title>Weather Dashboard</title>
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css' integrity='sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2' crossorigin='anonymous'>
+        <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
+        <script src='https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js' integrity='sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx' crossorigin='anonymous'></script>
     </head>
 
     <body>
@@ -18,8 +21,8 @@
             <div class="searches">
                 <h1>Search for a City:</h1>
                 <div class="search-container">
-                    <input type="text" placeholder="Minneapolis" name="search">
-                    <button type="submit">Search</button>
+                    <input type="text" placeholder="Minneapolis" id="findcity" name="search">
+                    <button type="submit" id="searchcity">Search</button>
                 </div>
                 <ul class="recent">
                     <li>Test</li>
@@ -59,33 +62,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- <div class="searches">
-            <h1>Search for a City:</h1>
-            <div class="search-container">
-                <form action="/action_page.php">
-                  <input type="text" placeholder="Minneapolis" name="search">
-                  <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
-              </div>
-            <ul class="recent"></ul>
-        </div>
-
-        <div class="cityandforecast">
-            <div class="searchedcity">
-                <h1>Minneapolis</h1>
-                <p>Temp:</p>
-                <p>Wind:</p>
-                <p>Humidity:</p>
-                <p>UV Index:</p>
-            </div>
-            <div class="forecast5day">
-                <div class="weatherblock"></div>
-                <div class="weatherblock"></div>
-                <div class="weatherblock"></div>
-                <div class="weatherblock"></div>
-                <div class="weatherblock"></div>
-            </div>
-        </div> -->
     </body>
+    <script src="assets/javascript/javascript.js"></script>
 </html>
