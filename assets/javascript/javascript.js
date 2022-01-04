@@ -5,6 +5,9 @@ var APIKey = "e3fc80ad5571c3e2bbb3009c402430e0";
 var getCityWeather = function(city){
     var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+findCity.value+'&appid='+APIKey;
 
+    localStorage.setItem('Recent Searches', findCity.value);
+    //FIX LOCAL STORAGE SO IT DOESN'T REWRITE OTHER VALUES
+
     fetch(apiUrl)
         .then(function(response) {
             if(response.ok) {
@@ -35,6 +38,10 @@ var getCityWeather = function(city){
             alert('City Not Found');
         });
 };
+
+// var recentsearches = function(){
+//     localStorage.setItem('Recent Searches', findCity.value);
+// };
 
 searchCity.addEventListener('click', getCityWeather);
 
