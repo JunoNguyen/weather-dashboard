@@ -6,11 +6,28 @@ var getCityWeather = function(city){
     var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+findCity.value+'&appid='+APIKey;
 
     fetch(apiUrl)
-        .then(function(response){
-            if(response.ok){
+        .then(function(response) {
+            if(response.ok) {
                 console.log(response);
                 response.json().then(function(data){
                     console.log(data);
+                    console.log(data.coord);
+                    console.log(data.coord.lon);
+                    var lat = data.coord.lat;
+                    var lon = data.coord.lon;
+                    var apiUrl2 = 'https://api.openweathermap.org/data/2.5/onecall?lat='+lat+'&lon='+lon+'&appid='+APIKey;
+                    console.log(apiUrl2);
+
+                    fetch(apiUrl2)
+                        .then(function(response){
+                            if(response.ok){
+                                console.log(response);
+                                response.json().then(function(data){
+                                    console.log(data);
+                                })
+                            }
+                        })
+                            
                 });
             }
         })
@@ -20,6 +37,8 @@ var getCityWeather = function(city){
 };
 
 searchCity.addEventListener('click', getCityWeather);
+
+
 
 
 
