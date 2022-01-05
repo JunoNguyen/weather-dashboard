@@ -227,32 +227,3 @@ var getCityWeather = function(city){
 displayRecentSearches();
 
 searchCity.addEventListener('click', getCityWeather);
-
-
-
-
-
-
-
-//  for (var i = 0; i < 5; i++){
-//      dailyTemp.textContent = data.daily[i].temp.day + "°F";
-//      dailyWind.textContent = data.daily[i].wind_gust + "MPH";
-//      dailyHumidity.textContent = data.daily[i].humidity + "%";
-// }; 
-                                        
-// for (var i = 0; i < 5; i++) {
-//     var forecastday = $("#forecastday" + i);
-//     var weatherBlock = $("#daily" + i);
-//     var dailyTemp = document.createElement('p');
-//     var dailyWind = document.createElement('p');
-//     var dailyHumidity = document.createElement('p');
-
-//     dailyTemp.textContent = data.daily[i].temp.day + "°F";
-//     dailyWind.textContent = data.daily[i].wind_gust + "MPH";
-//     dailyHumidity.textContent = data.daily[i].humidity + "%";
-
-//     weatherBlock.append(dailyTemp);
-//     weatherBlock.append(dailyWind);
-//     weatherBlock.append(dailyHumidity);
-    
-//     forecastday.append(today.format("MMM " + moment().add([i], "days").format("D") + " YYYY"));
