@@ -63,4 +63,18 @@ li {
     display:inline-block;
     margin: 10px;
     padding: 10px;
+    background-color: #282844;
+    color: white;
+    font-size: 12px;
+}
+
+#index {
+    background-color: #7bdf77;
+    width:100%;
+    margin-top: 10px;
+    color:white;
+    border:none;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
 }

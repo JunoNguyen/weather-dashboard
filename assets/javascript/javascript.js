@@ -26,80 +26,6 @@ var recentStorage = function(){
     recentSearchList.append(showRecent);
 };
 
-// var getCityWeather = function(city){
-//     var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+findCity.value+'&appid='+APIKey;
-
-//     recentStorage();
-//     console.log(resetSearch);
-
-//     resetSearch();
-
-//     fetch(apiUrl)
-//         .then(function(response) {
-//             if(response.ok) {
-//                 console.log(response);
-//                 response.json().then(function(data){
-//                     console.log(data);
-//                     console.log(data.coord);
-//                     console.log(data.coord.lon);
-//                     var lat = data.coord.lat;
-//                     var lon = data.coord.lon;
-//                     var apiUrl2 = 'https://api.openweathermap.org/data/2.5/onecall?lat='+lat+'&lon='+lon+'&units=imperial&appid='+APIKey;
-//                     console.log(apiUrl2);
-
-//                     cityname.textContent = findCity.value + " (" + (today.format("MMM do, YYYY")) + ") ";
-
-//                     fetch(apiUrl2)
-//                         .then(function(response){
-//                             if(response.ok){
-//                                 console.log(response);
-//                                 response.json().then(function(data){
-
-//                                     tempData = document.createElement('p');
-//                                     tempData.textContent = data.current.temp + "°F";
-//                                     tempEl.append(tempData);
-
-//                                     windData = document.createElement('p');
-//                                     windData.textContent = data.current.wind_speed + "MPH";
-//                                     windEl.append(windData);
-
-//                                     humidityData = document.createElement('p');
-//                                     humidityData.textContent = data.current.humidity + "%";
-//                                     humidityEl.append(humidityData);
-
-//                                     indexData = document.createElement('p');
-//                                     indexData.textContent = data.current.uvi;
-//                                     indexEl.append(indexData);
-
-//                                     for (var i = 0; i < 5; i++) {
-//                                         var forecastday = $("#forecastday" + i);
-//                                         var weatherBlock = $("#daily" + i);
-//                                         var dailyTemp = document.createElement('p');
-//                                         var dailyWind = document.createElement('p');
-//                                         var dailyHumidity = document.createElement('p');
-
-//                                         dailyTemp.textContent = "Temp: " + data.daily[i].temp.day + "°F";
-//                                         dailyWind.textContent = "Wind: " + data.daily[i].wind_gust + "MPH";
-//                                         dailyHumidity.textContent = "Humidity: " + data.daily[i].humidity + "%";
-
-//                                         weatherBlock.append(dailyTemp);
-//                                         weatherBlock.append(dailyWind);
-//                                         weatherBlock.append(dailyHumidity);
-
-//                                         forecastday.append(today.format("MMM " + moment().add([i], "days").format("D") + " YYYY"));
-//                                     };
-//                                 });
-//                             }
-//                         })
-                            
-//                 });
-//             }
-//         })
-//         .catch(function (error){
-//             alert('City Not Found');
-//         });
-// };
-
 var displayRecentSearches = function(){
     if(recentSearches !== null){
         for (var i = 0; i < recentSearches.length + 1; i++) {
@@ -118,10 +44,6 @@ var resetSearch = function(){
         fivedayblocks[i].hide();
     }
 };
-
-// displayRecentSearches();
-
-// searchCity.addEventListener('click', getCityWeather);
 
 var getCityWeather = function(city){
     var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+findCity.value+'&appid='+APIKey;
@@ -160,23 +82,6 @@ var getCityWeather = function(city){
                                         humidityData.textContent = data.current.humidity + "%";
                                         indexData.textContent = data.current.uvi;
 
-                                        for (var i = 0; i < 5; i++) {
-                                            var forecastday = $("#forecastday" + i);
-                                            var weatherBlock = $("#daily" + i);
-                                            var dailyTemp = document.createElement('p');
-                                            var dailyWind = document.createElement('p');
-                                            var dailyHumidity = document.createElement('p');
-                                        
-                                            dailyTemp.textContent = data.daily[i].temp.day + "°F";
-                                            dailyWind.textContent = data.daily[i].wind_gust + "MPH";
-                                            dailyHumidity.textContent = data.daily[i].humidity + "%";
-                                        
-                                            weatherBlock.append(dailyTemp);
-                                            weatherBlock.append(dailyWind);
-                                            weatherBlock.append(dailyHumidity);
-                                            
-                                            forecastday.append(today.format("MMM " + moment().add([i], "days").format("D") + " YYYY"));
-                                        };
                                     } else {
                                         tempData = document.createElement('p');
                                         tempData.textContent = data.current.temp + "°F";
@@ -193,25 +98,27 @@ var getCityWeather = function(city){
                                         indexData = document.createElement('p');
                                         indexData.textContent = data.current.uvi;
                                         indexEl.append(indexData);
-
-                                        for (var i = 0; i < 5; i++) {
-                                            var forecastday = $("#forecastday" + i);
-                                            var weatherBlock = $("#daily" + i);
-                                            var dailyTemp = document.createElement('p');
-                                            var dailyWind = document.createElement('p');
-                                            var dailyHumidity = document.createElement('p');
-                                        
-                                            dailyTemp.textContent = data.daily[i].temp.day + "°F";
-                                            dailyWind.textContent = data.daily[i].wind_gust + "MPH";
-                                            dailyHumidity.textContent = data.daily[i].humidity + "%";
-                                        
-                                            weatherBlock.append(dailyTemp);
-                                            weatherBlock.append(dailyWind);
-                                            weatherBlock.append(dailyHumidity);
-                                            
-                                            forecastday.append(today.format("MMM " + moment().add([i], "days").format("D") + " YYYY"));
-                                        };
                                     }
+
+                                    for (var i = 0; i < 5; i++) {
+                                        $('#daily' + i).empty();
+                                        var dailyForecastday = document.createElement('p');
+                                        var forecastday = $("#forecastday" + i);
+                                        var weatherBlock = $("#daily" + i);
+                                        var dailyTemp = document.createElement('p');
+                                        var dailyWind = document.createElement('p');
+                                        var dailyHumidity = document.createElement('p');
+                                        
+                                        dailyForecastday.textContent = today.format("MMM " + moment().add([i], "days").format("D") + " YYYY");
+                                        dailyTemp.textContent = "Temp: " + data.daily[i].temp.day + "°F";
+                                        dailyWind.textContent = "Wind: " + data.daily[i].wind_gust + "MPH";
+                                        dailyHumidity.textContent = "Humidity: " + data.daily[i].humidity + "%";
+                                    
+                                        weatherBlock.append(dailyForecastday);
+                                        weatherBlock.append(dailyTemp);
+                                        weatherBlock.append(dailyWind);
+                                        weatherBlock.append(dailyHumidity);
+                                    };
                                 })
                             }
                         })
