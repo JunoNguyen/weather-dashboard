@@ -6,13 +6,34 @@ var windEl = $("#wind");
 var humidityEl = $("#humidity");
 var indexEl = $("#index");
 var forecastDailyEl = $("#forecastdaily");
+var today = moment();
+var recentSearchList = $("#recent-searches");
 
+var recentSearches = [];
+
+var recentStorage = function(){
+
+    recentSearches.push(findCity.value);
+
+    localStorage.setItem("Recent Searches", JSON.stringify(recentSearches));
+
+    var getRecent = localStorage.getItem("Recent Searches");
+
+    var arrayRecent = JSON.parse(getRecent);
+
+    console.log(getRecent);
+
+    var showRecent = document.createElement('li');
+
+    showRecent.textContent = arrayRecent.slice(-1);
+
+    recentSearchList.append(showRecent);
+};
 
 var getCityWeather = function(city){
     var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+findCity.value+'&appid='+APIKey;
 
-    localStorage.setItem('Recent Searches', findCity.value);
-    //FIX LOCAL STORAGE SO IT DOESN'T REWRITE OTHER VALUES
+    recentStorage();
 
     fetch(apiUrl)
         .then(function(response) {
@@ -26,6 +47,8 @@ var getCityWeather = function(city){
                     var lon = data.coord.lon;
                     var apiUrl2 = 'https://api.openweathermap.org/data/2.5/onecall?lat='+lat+'&lon='+lon+'&units=imperial&appid='+APIKey;
                     console.log(apiUrl2);
+
+                    cityname.textContent = findCity.value + " (" + (today.format("MMM do, YYYY")) + ") ";
 
                     fetch(apiUrl2)
                         .then(function(response){
@@ -51,6 +74,7 @@ var getCityWeather = function(city){
                                     indexEl.append(indexData);
 
                                     for (var i = 0; i < 5; i++) {
+                                        var forecastday = $("#forecastday" + i);
                                         var weatherBlock = $("#daily" + i);
                                         var dailyTemp = document.createElement('p');
                                         var dailyWind = document.createElement('p');
@@ -63,6 +87,8 @@ var getCityWeather = function(city){
                                         weatherBlock.append(dailyTemp);
                                         weatherBlock.append(dailyWind);
                                         weatherBlock.append(dailyHumidity);
+
+                                        forecastday.append(today.format("MMM " + moment().add([i], "days").format("D") + " YYYY"));
                                     };
                                 });
                             }
@@ -77,6 +103,10 @@ var getCityWeather = function(city){
 };
 
 searchCity.addEventListener('click', getCityWeather);
+
+//MOMENT 
+
+
 
 
 
