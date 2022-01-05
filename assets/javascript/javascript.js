@@ -39,7 +39,7 @@ var getCityWeather = function(city){
                                     tempEl.append(tempData);
 
                                     windData = document.createElement('p');
-                                    windData.textContent = data.current.wind_gust + "MPH";
+                                    windData.textContent = data.current.wind_speed + "MPH";
                                     windEl.append(windData);
 
                                     humidityData = document.createElement('p');
@@ -51,33 +51,20 @@ var getCityWeather = function(city){
                                     indexEl.append(indexData);
 
                                     for (var i = 0; i < 5; i++) {
-                                        var dailyBox = document.createElement('div');
+                                        var weatherBlock = $("#daily" + i);
                                         var dailyTemp = document.createElement('p');
                                         var dailyWind = document.createElement('p');
                                         var dailyHumidity = document.createElement('p');
 
-                                        dailyTemp.textContent = data.daily[i].temp.day + "°F";
-                                        dailyWind.textContent = data.daily[i].wind_gust + "MPH";
-                                        dailyHumidity.textContent = data.daily[i].humidity + "%";
+                                        dailyTemp.textContent = "Temp: " + data.daily[i].temp.day + "°F";
+                                        dailyWind.textContent = "Wind: " + data.daily[i].wind_gust + "MPH";
+                                        dailyHumidity.textContent = "Humidity: " + data.daily[i].humidity + "%";
 
-                                        forecastDailyEl.dailyBox.append(dailyTemp);
-                                        forecastDailyEl.dailyBox.append(dailyWind);
-                                        forecastDailyEl.dailyBox.append(dailyHumidity);
+                                        weatherBlock.append(dailyTemp);
+                                        weatherBlock.append(dailyWind);
+                                        weatherBlock.append(dailyHumidity);
                                     };
                                 });
-                                    // for (var i = 0; i < 4; i++) {
-                                    //     var dailyTemp = document.createElement('p');
-                                    //     var dailyWind = document.createElement('p');
-                                    //     var dailyHumidity = document.createElement('p');
-
-                                    //     dailyTemp.textContent = data.daily[i].temp + "°F";
-                                    //     dailyWind.textContent = data.daily[i].wind_gust + "MPH";
-                                    //     dailyHumidity.textContent = data.daily[i].humidity + "%";
-
-                                    //     forecastDailyEl.append(dailyTemp);
-                                    //     forecastDailyEl.append(dailyWind);
-                                    //     forecastDailyEl.append(dailyHumidity);
-                                    // };
                             }
                         })
                             
